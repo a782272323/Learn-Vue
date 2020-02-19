@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li>名称:{{info.name}}</li>
+        <li>地址:{{info.address.street}}</li>
+        <li>城市:{{info.address.city}}</li>
+        <li><a v-bind:href="info.url">{{info.url}}</a></li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        // 括号()是函数，大括号{}是对象，如下所示是函数对象
+        data()  {
+            return  {
+                info:   {
+                    name: "",
+                    url: "",
+                    address: {
+                        street: "",
+                        city: "",
+                        country: ""
+                    }
+                }
+            }
+        },
+        // vue 的方法
+        mounted()   {
+            axios.get("data.json")
+                .then(respose => this.info = respose.data);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 调用cpu计算 -->
+    <div>获取即时当前时间的方法:{{getCurrentTime1()}}</div>
+    <!-- 获取之前计算的值 -->
+    <div>获取当前时间的属性: {{getCurrentTime2}}</div>
+</div>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        methods:    {
+            getCurrentTime1:    function () {
+                return Date.now();
+
+            }
+        },
+
+        computed:   {
+          getCurrentTime2: function () {
+              return Date.now();
+
+          }
+        }
+    });
+</script>
+</body>
+</html>

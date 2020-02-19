@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button v-on:click="sayHi">测试</button>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script scr="test.js"></script>
+<script type="text/javascript">
+    function sayHi() {
+        Utils.setUsername("老王");
+        // Utils.setUsername("老王");
+        alert(Utils.getUsername());
+    }
+</script>
+</body>
+</html>
