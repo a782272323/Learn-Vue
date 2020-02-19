@@ -2,3 +2,4 @@
 *.less linguist-language=vue
 *.js linguist-language=vue
 *.html linguist-language=vue
+*.vue linguist-language=vue
