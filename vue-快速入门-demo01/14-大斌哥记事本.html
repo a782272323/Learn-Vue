@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content=noindex,nofollow"/>
+    <meta name="viewport" content=width=device-width,initial-scale=1"/>
+    <meta name="googlebot" content=noindex,nofollow"/>
+    <link rel="stylesheet" type="text/css" href="./css/index-jishiben.css">
+    <title>大斌哥记事本</title>
+
+</head>
+<body>
+<!-- HTML代码 -->
+<!-- 主题区域 -->
+<section id="todoapp">
+    <!-- 输入框 -->
+    <header class="header">
+        <h1>大斌哥记事本</h1>
+        <!-- 输入文本框 -->
+        <input v-model="inputValue" @keyup.enter="add" autofocus="autofocus" autocomplete="off" placeholder="请输入任务" class="new-todo"/>
+    </header>
+    <!-- 列表区域 -->
+    <section class="main">
+        <ul class="todo-list">
+            <li class="todo" v-for="(item, index) in list">
+                <div class="view">
+                    <!-- 索引 -->
+                    <span class="index">{{ index+1 }}.</span>
+                    <!-- 列表内容 -->
+                    <label>{{ item }}</label>
+                    <!-- 删除按钮 -->
+                    <button class="destroy" @click="remove(index)"></button>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <!-- 统计和清空 -->
+    <footer class="footer">
+        <!-- 统计数据 -->
+        <span class="todo-count" v-if="list.length!=0">
+            <strong>一共 {{ list.length }}</strong> 数据
+        </span>
+        <button v-show="list.length!=0" class="clear-completed" @click="clear">
+            清空全部数据
+        </button>
+    </footer>
+    <!-- 底部 -->
+    <footer class="info">
+        <p>
+            <img src="./img/logo1.jpg" width="100%" height="100px">
+        </p>
+    </footer>
+</section>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- Vue实例 -->
+<script>
+    var app = new Vue({
+        el: "#todoapp",
+        data: {
+            list: ["写代码", "睡觉", "吃饭"],
+            inputValue: "好好学习,天天向上"
+        },
+        methods:{
+            // 添加
+            add:function () {
+                this.list.push(this.inputValue);
+            },
+            // 删除
+            remove:function (index) {
+                // 根据索引删除，一次删几个
+                this.list.splice(index, 1);
+            },
+            clear:function () {
+                this.list = [];
+            }
+        }
+    });
+</script>
+</body>
+</html>

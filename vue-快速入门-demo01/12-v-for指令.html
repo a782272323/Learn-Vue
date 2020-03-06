@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+
+</head>
+<body>
+<!-- HTML代码 -->
+<div id="app">
+    <input type="button" value="添加数据" @click="add">
+    <input type="button" value="移除数据" @click="remove">
+    <ul>
+        <li v-for="(item,index) in arr">{{ index+1 }}. 梁鸿斌:{{ item }}</li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+    <h2 v-for="item in vagetables" v-bind:title="item.name">
+        {{ item.name }}
+    </h2>
+</div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- Vue实例 -->
+<script>
+    var app = new Vue({
+        el: "#app",
+        data:{
+            arr:["广东","广西","西藏","哈球"],
+            vagetables: [
+                {name: "西兰花炒蛋"},
+                {name: "但超西兰花"}
+            ]
+        },
+        methods: {
+            add: function () {
+                this.vagetables.push({ name: "哈哈哈"})
+            },
+            remove:function () {
+                this.vagetables.shift();
+            }
+        }
+    });
+</script>
+</body>
+</html>
